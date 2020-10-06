@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">منتجات كل شي</string>
+
+    <string name="title_activity_category_activity">الفئات</string>
+    <string name="save">حفظ</string>
+
+    <string name="newSection">تصنيف جديد</string>
+    <string name="sectionName">اسم التصنيف</string>
+    <string name="sectionContent">محتوى التصنيف</string>
+    <string name="add">إضافة</string>
+    <string name="AddAnewSection">إضافة تصنيف جديد</string>
+    <string name="EnterNewCategoryName">أدخل اسم التصنيف الجديد</string>
+    <string name="EnterYourName">أدخل اسمك</string>
+
+</resources>

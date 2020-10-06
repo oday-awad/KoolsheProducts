@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Activities.MainActivity">
+
+    <Button
+        android:id="@+id/export"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Export Data To CSV" />
+
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear All Data" />
+
+    <Button
+        android:id="@+id/dataSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Size" />
+
+    <Button
+        android:id="@+id/changeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change your name" />
+
+    <Button
+        android:id="@+id/changeMarket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Market" />
+</LinearLayout>

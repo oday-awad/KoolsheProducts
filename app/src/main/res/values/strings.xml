@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Koolshe Products</string>
+
+    <string name="title_activity_category_activity">Categories</string>
+    <string name="save">save</string>
+    <string name="newSection">new Section</string>
+    <string name="sectionName">Section Name</string>
+    <string name="sectionContent">Section Content</string>
+    <string name="add">ADD</string>
+    <string name="AddAnewSection">Add A new Section</string>
+    <string name="EnterNewCategoryName">Enter The New Category Name</string>
+    <string name="EnterYourName">Enter Your Name</string>
+</resources>
