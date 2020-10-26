@@ -18,14 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Delete" />
+            android:text="حذف" />
 
 
         <Button
             android:id="@+id/setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Setting" />
+            android:text="الإعدادات" />
     </LinearLayout>
 
     <ScrollView
@@ -43,6 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -50,15 +51,15 @@
             android:id="@+id/newCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="تصنيف جديد" />
+            android:text="تصنيف جديد"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/newProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="منتج جديد" />
+            android:text="منتج جديد"
+            android:textSize="22sp" />
     </LinearLayout>
 
 </LinearLayout>

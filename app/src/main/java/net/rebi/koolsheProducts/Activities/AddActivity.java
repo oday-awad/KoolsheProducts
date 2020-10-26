@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,6 @@ import net.rebi.koolsheProducts.R;
 import net.rebi.koolsheProducts.arraies;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -41,11 +41,19 @@ public class AddActivity extends AppCompatActivity {
 
 
         intent = getIntent ( );
-        final int position = Objects.requireNonNull ( intent.getExtras ( ) ).getInt ( "position" );
+        //        final int position = Objects.requireNonNull ( intent.getExtras ( ) ).getInt (
+        //        "position" );
 
-        category = arraies.categories.get ( position );
+        //        String parent = Objects.requireNonNull ( intent.getExtras ( ) ).getString (
+        //        "parent" );
 
-        setTitle ( category.getName ( ) );
+        //        category = arraies.aSASaSas.get ( position );
+
+        //        arraies.loadCategories ( this  , categoryTag);
+        //todo
+        //        category = arraies.categories.get ( 0 );
+
+        //        setTitle ( parent );
 
         ScrollView scrollView = new ScrollView ( this );
 
@@ -57,13 +65,36 @@ public class AddActivity extends AppCompatActivity {
         String market =
                 getSharedPreferences ( "koolshe" , MODE_PRIVATE ).getString ( "market" , "" );
 
-        layout.addView ( newSectionBasic ( count++ , "Market" , market ) );
-        layout.addView ( newSectionBasic ( count++ , "ID" , "" ) );
+        String ID =
+                getSharedPreferences ( "koolshe" , MODE_PRIVATE ).getString ( "ID" , "" );
 
-        for ( int i = 0 ; i < category.getSectionsNames ( ).length ; i++ ) {
-            layout.addView ( newSectionBasic ( count++ , category.getSectionsNames ( )[ i ] ,
-                                               "" ) );
-        }
+
+        layout.addView ( newSectionBasic ( count++ , "المتجر" , market , InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL  ) );
+        layout.addView ( newSectionBasic ( count++ , "ID" , ID , InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "اسم المنتج" , "" ,
+                                           InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "الفئة" , "" , InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "السعر" , "" ,
+                                           InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL) );
+        layout.addView ( newSectionBasic ( count++ , "الوزن" , "" ,
+                                           InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "الوزن الكلي" , "" ,
+                                           InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "الحجم" , "" ,
+                                           InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "الشركة المصنعة" , "" ,
+                                           InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "بلد الصنع" , "" ,
+                                           InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL ) );
+        layout.addView ( newSectionBasic ( count++ , "المحتويات" , "" ,
+                                           InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL ) );
+
+        //        for ( int i = 0 ; i < category.getSectionsNames ( ).length ; i++ ) {
+        //            layout.addView ( newSectionBasic ( count++ , category.getSectionsNames ( )[
+        //            i ] ,
+        //                                               "" ) );
+        //        }
+
 
         layout.addView ( actionButtons ( ) );
 
@@ -102,7 +133,7 @@ public class AddActivity extends AppCompatActivity {
         section.addView ( sectionName );
         //End Section Name
 
-        section.addView ( newDivider ( 20 ) );
+        section.addView ( newDivider ( ) );
 
         //Start Section Content
         TextView tv_2 = new TextView ( this );
@@ -123,7 +154,7 @@ public class AddActivity extends AppCompatActivity {
     }
 
     private LinearLayout newSectionBasic (
-            int count , String SectionNameString , String SectionContentString
+            int count , String SectionNameString , String SectionContentString , int inputeType
     ) {
 
         LinearLayout section = new LinearLayout ( this );
@@ -146,13 +177,14 @@ public class AddActivity extends AppCompatActivity {
         section.addView ( sectionName );
         //End Section Name
 
-        section.addView ( newDivider ( 20 ) );
+        section.addView ( newDivider ( ) );
 
         //Start Section Content
 
         EditText sectionContent = new EditText ( this );
         sectionContent.setLayoutParams ( new LinearLayout.LayoutParams ( LinearLayout.LayoutParams.MATCH_PARENT , LinearLayout.LayoutParams.MATCH_PARENT ) );
         sectionContent.setText ( SectionContentString );
+        sectionContent.setInputType ( inputeType );
         section.addView ( sectionContent );
         //End Section Content
 
@@ -195,19 +227,18 @@ public class AddActivity extends AppCompatActivity {
         return section;
     }
 
-    private View newDivider ( int height ) {
+    private View newDivider ( ) {
         View divider = new View ( this );
-        divider.setLayoutParams ( new LinearLayout.LayoutParams ( LinearLayout.LayoutParams.WRAP_CONTENT , height ) );
+        divider.setLayoutParams ( new LinearLayout.LayoutParams ( LinearLayout.LayoutParams.WRAP_CONTENT , 20 ) );
         return divider;
     }
 
     private void btnSave ( ) {
         Toast.makeText ( this , getString ( R.string.save ) , Toast.LENGTH_SHORT ).show ( );
 
-        arraies.sections.add ( new Section ( "###" ,
-                                             "----------------------------------------------" ) );
+        arraies.loadRealData ( this );
+        arraies.sections.add ( new Section ( "###" , "----------------------------------" ) );
 
-        arraies.sections.add ( new Section ( "Category" , category.getName ( ) ) );
 
         //Todo
         for ( int i = 0 ; i < sectionsNamesBasic.size ( ) ; i++ ) {
@@ -225,18 +256,10 @@ public class AddActivity extends AppCompatActivity {
 
         }
 
-        arraies.sections.add ( new Section ( "" , "" ) );
-        arraies.sections.add ( new Section ( "" , "" ) );
-        arraies.sections.add ( new Section ( "" , "" ) );
-        arraies.sections.add ( new Section ( "" , "" ) );
-        arraies.sections.add ( new Section ( "" , "" ) );
-
 
         arraies.saveRealData ( this );
 
         finish ( );
-
-
     }
 
     private void btnNew ( ) {
@@ -270,9 +293,9 @@ public class AddActivity extends AppCompatActivity {
 
     public void showAlertDialog ( ) {
         AlertDialog.Builder builder = new AlertDialog.Builder ( this );
-        builder.setTitle ( "Add New Product" );
-        builder.setMessage ( "Are you sure ?" );
-        builder.setPositiveButton ( "OK" , new DialogInterface.OnClickListener ( ) {
+        builder.setTitle ( "حفظ المنتج" );
+        builder.setMessage ( "هل أنت متأكد ؟" );
+        builder.setPositiveButton ( "نعم" , new DialogInterface.OnClickListener ( ) {
             @Override
             public void onClick ( DialogInterface dialog , int which ) {
                 btnSave ( );

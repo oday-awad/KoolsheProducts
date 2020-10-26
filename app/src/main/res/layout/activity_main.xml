@@ -1,40 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".Activities.MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/export"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Export Data To CSV" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear All Data" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:selectAllOnFocus="true"
+            android:textIsSelectable="true" />
 
-    <Button
-        android:id="@+id/dataSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data Size" />
+        <Button
+            android:id="@+id/export"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="استخراج البيانات" />
 
-    <Button
-        android:id="@+id/changeName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change your name" />
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="مسح كل المنتجات" />
 
-    <Button
-        android:id="@+id/changeMarket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change Market" />
-</LinearLayout>
+        <Button
+            android:id="@+id/dataSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="عدد المنتجات" />
+
+        <Button
+            android:id="@+id/changeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تغيير اسمك" />
+
+        <Button
+            android:id="@+id/changeMarket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تغيير المتجر" />
+
+        <Button
+            android:id="@+id/changeID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تغيير الحرف" />
+    </LinearLayout>
+</ScrollView>
+
